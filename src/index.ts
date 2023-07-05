@@ -1,19 +1,22 @@
-export type EventType = Symbol | String
-export type EventHandler = (data?: any) => void
+export type EventType = symbol | string
+export type EventHandler<T = unknown> = (data?: T) => void
 
-function transmit() {
-  let transmitMap = new Map<EventType, EventHandler[]>()
+function transmit<T extends Record<EventType, any>>() {
+  const transmitMap = new Map<keyof T, EventHandler<T[keyof T]>[]>()
 
-  function emit(event: EventType, data) {
+  function emit<k extends keyof T>(event: k, data?: T[k]) {
     const handlers = transmitMap.get(event)
     if (handlers) {
       handlers.forEach((handler) => {
         handler(data)
       })
     }
+    else {
+      console.warn('Triggers an unsubscribed event type')
+    }
   }
 
-  function on(event: EventType, handler: (data: any) => void) {
+  function on<k extends keyof T>(event: k, handler: EventHandler<T[k]>) {
     if (transmitMap.has(event)) {
       const handlers = [...transmitMap.get(event), handler]
       transmitMap.set(event, handlers)
@@ -25,21 +28,14 @@ function transmit() {
 
   function off(event) {
     if (transmitMap.has(event))
-      transmitMap.clear()
+      transmitMap.delete(event)
   }
 
   function clear() {
-    transmitMap = new Map()
+    transmitMap.clear()
   }
 
   return { emit, on, off, clear }
 }
-
-const event = transmit()
-event.on('foo', (e: any) => {
-  console.log('foo', e)
-})
-// event.emit('foo', 121212)
-// event.emit('foo', 456)
 
 export default transmit
