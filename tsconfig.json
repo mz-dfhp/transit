@@ -5,7 +5,8 @@
     "declaration": true,
     "outDir": "dist",
     "rootDir": "src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
-  "include": ["src"]
+  "include": ["src", "src/__test__"]
 }
