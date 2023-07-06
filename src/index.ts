@@ -1,5 +1,5 @@
 export type EventType = symbol | string
-export type EventHandler<T = unknown> = (data?: T) => void
+export type EventHandler<T = unknown> = (data: T) => void
 
 function transmit<T extends Record<EventType, any>>() {
   const transmitMap = new Map<keyof T, EventHandler<T[keyof T]>[]>()
@@ -26,7 +26,7 @@ function transmit<T extends Record<EventType, any>>() {
     }
   }
 
-  function off(event) {
+  function off<k extends keyof T>(event: k) {
     if (transmitMap.has(event))
       transmitMap.delete(event)
   }

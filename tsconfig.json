@@ -8,5 +8,5 @@
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
-  "include": ["src", "src/__test__"]
+  "include": ["src/**/*.ts"]
 }
