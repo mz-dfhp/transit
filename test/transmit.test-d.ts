@@ -1,16 +1,16 @@
 import { describe, expectTypeOf, it } from 'vitest'
-import transmit from '../src'
+import transit from '../src'
 
 interface events {
   foo: string
   bar?: number
 }
 
-const event = transmit<events>()
+const event = transit<events>()
 
 describe('my types work properly', () => {
-  it('transmit', () => {
-    expectTypeOf(transmit).toBeFunction()
+  it('transit', () => {
+    expectTypeOf(transit).toBeFunction()
   })
 
   it('types', () => {

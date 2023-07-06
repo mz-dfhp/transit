@@ -1,25 +1,25 @@
-# transmit
+# transit
 
 ## Install
 
 ```sh
-$ npm install --save transmit
+$ npm install --save transit
 ```
 
 ```javascript
 // using ES6 modules
-import transmit from 'transmit'
+import transit from 'transit'
 
 // using  modules
-var transmit = require('transmit')
+var transit = require('transit')
 ```
 
 ## Usage
 
 ```js
-import transmit from 'transmit'
+import transit from 'transit'
 
-const event = transmit()
+const event = transit()
 
 event.on('foo', (data) => {
   console.log(data) // abc
@@ -39,7 +39,7 @@ event.clear()
 ## Typescript
 
 ```ts
-import transmit from 'transmit'
+import transit from 'transit'
 
 interface Events {
   foo: string
@@ -47,7 +47,7 @@ interface Events {
   add: symbol
 }
 
-const event = transmit<Events>()
+const event = transit<Events>()
 event.on('foo', (data) => {
   // (parameter) data: string
   console.log(data) // abc

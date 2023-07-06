@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import transmit from '../src'
+import transit from '../src'
 
 interface events {
   foo: string
@@ -7,9 +7,9 @@ interface events {
   add: symbol
 }
 
-const event = transmit<events>()
+const event = transit<events>()
 
-describe('Test transmit function', () => {
+describe('Test transit function', () => {
   it('Test emit function', () => {
     const mockHandler = vi.fn()
 

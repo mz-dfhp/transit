@@ -1,11 +1,11 @@
 export type EventType = symbol | string
 export type EventHandler<T = unknown> = (data: T) => void
 
-function transmit<T extends Record<EventType, any>>() {
-  const transmitMap = new Map<keyof T, EventHandler<T[keyof T]>[]>()
+function transit<T extends Record<EventType, any>>() {
+  const transitMap = new Map<keyof T, EventHandler<T[keyof T]>[]>()
 
   function emit<k extends keyof T>(event: k, data?: T[k]) {
-    const handlers = transmitMap.get(event)
+    const handlers = transitMap.get(event)
     if (handlers) {
       handlers.forEach((handler) => {
         handler(data)
@@ -17,25 +17,25 @@ function transmit<T extends Record<EventType, any>>() {
   }
 
   function on<k extends keyof T>(event: k, handler: EventHandler<T[k]>) {
-    if (transmitMap.has(event)) {
-      const handlers = [...transmitMap.get(event), handler]
-      transmitMap.set(event, handlers)
+    if (transitMap.has(event)) {
+      const handlers = [...transitMap.get(event), handler]
+      transitMap.set(event, handlers)
     }
     else {
-      transmitMap.set(event, [handler])
+      transitMap.set(event, [handler])
     }
   }
 
   function off<k extends keyof T>(event: k) {
-    if (transmitMap.has(event))
-      transmitMap.delete(event)
+    if (transitMap.has(event))
+      transitMap.delete(event)
   }
 
   function clear() {
-    transmitMap.clear()
+    transitMap.clear()
   }
 
   return { emit, on, off, clear }
 }
 
-export default transmit
+export default transit
