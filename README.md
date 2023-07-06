@@ -1,5 +1,9 @@
 # transit
 
+
+-   **🚀 5kb publishing subscription tool**
+-   **🍭 Written in TypeScript**
+-   **💪 Unit testing provides stability assurance**
 ## Install
 
 ```sh
