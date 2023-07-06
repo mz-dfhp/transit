@@ -2,8 +2,14 @@
   "name": "transmit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "umd:main": "dist/index.umd.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "vitest",
@@ -12,7 +18,7 @@
     "lint:fix": "eslint . --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "mz-dfhp",
   "license": "ISC",
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.6",
