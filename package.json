@@ -1,12 +1,13 @@
 {
   "name": "transit",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "author": "mz-dfhp",
   "license": "ISC",
   "keywords": [],
   "exports": {
+    "types": "./dist/index.d.ts",
     "import": "./dist/index.esm.js",
     "require": "./dist/index.cjs"
   },
