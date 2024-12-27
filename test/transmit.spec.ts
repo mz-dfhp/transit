@@ -9,8 +9,8 @@ interface events {
 
 const event = transit<events>()
 
-describe('Test transit function', () => {
-  it('Test emit function', () => {
+describe('test transit function', () => {
+  it('test emit function', () => {
     const mockHandler = vi.fn()
 
     event.on('foo', mockHandler)
@@ -20,7 +20,7 @@ describe('Test transit function', () => {
     expect(mockHandler).toHaveBeenCalledWith('abc')
   })
 
-  it('Test on function', () => {
+  it('test on function', () => {
     const mockHandler = vi.fn()
 
     event.on('bar', mockHandler)
@@ -30,7 +30,7 @@ describe('Test transit function', () => {
     expect(mockHandler).toHaveBeenCalledWith(123)
   })
 
-  it('Test off function', () => {
+  it('test off function', () => {
     const mockHandler = vi.fn()
 
     event.on('add', mockHandler)
@@ -42,7 +42,7 @@ describe('Test transit function', () => {
     expect(mockHandler).not.toHaveBeenCalled()
   })
 
-  it('Test clear function', () => {
+  it('test clear function', () => {
     const mockHandler = vi.fn()
 
     event.on('foo', mockHandler)

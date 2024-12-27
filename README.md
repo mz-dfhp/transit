@@ -1,6 +1,5 @@
 # transit
 
-
 -   **🚀 5kb publishing subscription tool**
 -   **🍭 Written in TypeScript**
 -   **💪 Unit testing provides stability assurance**
@@ -38,7 +37,6 @@ event.emit('add', 1)
 event.off('foo')
 event.clear()
 ```
-
 
 ## Typescript
 
